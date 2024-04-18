@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -107,7 +108,9 @@ fun BusinessCard(fullName: String, title: String, phone: String, social:String,
 
     //Second Box
     Box (
-        modifier = modifier.fillMaxSize().padding(bottom = 20.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(bottom = 20.dp),
         contentAlignment = Alignment.BottomCenter
     ){
         Column (
@@ -167,11 +170,11 @@ fun BusinessCard(fullName: String, title: String, phone: String, social:String,
 fun GreetingPreview() {
     BussinessCardTheme {
         BusinessCard(
-            fullName = "Noah Jonah",
-            title = "Some title here",
-            phone = "+225 767 482 267",
-            social = "instagram@_noahjonah_",
-            email ="noahjonah705@gmail.com"
+            fullName = stringResource(R.string.fullName),
+            title = stringResource(R.string.title),
+            phone = stringResource(R.string.phone),
+            social = stringResource(R.string.socialMedia),
+            email = stringResource(R.string.email)
         )
     }
 }

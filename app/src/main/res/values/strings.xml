@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Bussiness Card</string>
+    <string name="fullName">Noah Jonah</string>
+    <string name="title">Application Security</string>
+    <string name="phone">+225 767 482 267</string>
+    <string name="socialMedia">instagram@_noahjonah_</string>
+    <string name="email">noahjonah705@gmail.com</string>
 </resources>
