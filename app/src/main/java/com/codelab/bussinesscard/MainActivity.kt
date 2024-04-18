@@ -42,11 +42,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     BusinessCard(
-                        fullName = "Noah Jonah",
-                        title = "Some title here",
-                        phone = "+225 767 482 267",
-                        social = "instagram@_noahjonah_",
-                        email ="noahjonah705@gmail.com"
+                        fullName = stringResource(R.string.fullName),
+                        title = stringResource(R.string.title),
+                        phone = stringResource(R.string.phone),
+                        social = stringResource(R.string.socialMedia),
+                        email = stringResource(R.string.email)
                     )
                 }
             }
