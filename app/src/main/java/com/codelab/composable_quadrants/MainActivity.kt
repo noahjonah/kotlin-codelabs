@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -19,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,7 +39,19 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier,
                             verticalArrangement = Arrangement.SpaceEvenly
                         ){
+                            Quadrants(
+                                headingOne = stringResource(R.string.headingOne),
+                                contentOne = stringResource(R.string.contentOne),
 
+                                headingTwo = stringResource(R.string.headingTwo),
+                                contentTwo = stringResource(R.string.contentTwo),
+
+                                headingThree = stringResource(R.string.headingThree),
+                                contentThree = stringResource(R.string.contentThree),
+
+                                headingFour = stringResource(R.string.headingFour),
+                                contentFour = stringResource(R.string.contentFour)
+                            )
                         }
                     }
                 }
@@ -50,13 +62,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Quadrants(
-    headingOne: String, contentOne: String,
-    headingTwo: String, contentTwo: String,
-    headingThree: String, contentThree: String,
-    headingFour: String, contentFour: String
+    headingOne: String, contentOne: String, headingTwo: String, contentTwo: String,
+    headingThree: String, contentThree: String, headingFour: String, contentFour: String
     ) {
-    Box (
-        modifier = Modifier
+    Column (
+        modifier = Modifier.fillMaxSize()
     ){
         Row(
             modifier = Modifier
@@ -76,7 +86,6 @@ fun Quadrants(
             ) {
                 Text(
                     text = headingOne,
-                    textAlign = TextAlign.Center,
                     modifier = Modifier.padding(
                         start = 0.dp,
                         top = 0.dp,
@@ -86,7 +95,7 @@ fun Quadrants(
                 )
                 Text(
                     text = contentOne,
-                    textAlign = TextAlign.Center
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp)
                 )
             }
             Column (
@@ -101,27 +110,27 @@ fun Quadrants(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = headingOne,
-                    textAlign = TextAlign.Center
+                    text = headingTwo,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(bottom = 16.dp)
                 )
                 Text(
-                    text = contentOne,
-                    textAlign = TextAlign.Center
+                    text = contentTwo,
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp)
                 )
             }
-
         }
-
+// Second row
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.5f)
+                .fillMaxHeight()
 
         ){
             Column(
                 modifier = Modifier
                     //.padding(16.dp)
-                    .background(Color(0xFFEADDFF))
+                    .background(Color(0xFFB69DF8))
                     .fillMaxHeight()
                     .fillMaxWidth(0.5f),
 
@@ -130,24 +139,20 @@ fun Quadrants(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = headingOne,
+                    text = headingThree,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(
-                        start = 0.dp,
-                        top = 0.dp,
-                        end = 0.dp,
-                        bottom = 16.dp
+                    modifier = Modifier.padding(bottom = 16.dp
                     )
                 )
                 Text(
-                    text = contentOne,
-                    textAlign = TextAlign.Center
+                    text = contentThree,
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp)
                 )
             }
             Column (
                 modifier = Modifier
                     //.padding(16.dp)
-                    .background(Color(0xFFD0BCFF))
+                    .background(Color(0xFFF6EDFF))
                     .fillMaxHeight()
                     .fillMaxWidth(),
 
@@ -156,18 +161,17 @@ fun Quadrants(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = headingOne,
-                    textAlign = TextAlign.Center
+                    text = headingFour,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(bottom = 16.dp)
                 )
                 Text(
-                    text = contentOne,
-                    textAlign = TextAlign.Center
+                    text = contentFour,
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp)
                 )
             }
-
         }
     }
-
 }
 
 @Preview(
@@ -178,11 +182,17 @@ fun Quadrants(
 fun GreetingPreview() {
     ComposableQuadrantsTheme {
         Quadrants(
-            headingOne = "head 1", contentOne = "content 1",
-            headingTwo = "head 1", contentTwo = "content 1",
-            headingThree = "head 1", contentThree = "content 1",
-            headingFour = "head 1", contentFour = "content 1"
+            headingOne = stringResource(R.string.headingOne),
+            contentOne = stringResource(R.string.contentOne),
 
+            headingTwo = stringResource(R.string.headingTwo),
+            contentTwo = stringResource(R.string.contentTwo),
+
+            headingThree = stringResource(R.string.headingThree),
+            contentThree = stringResource(R.string.contentThree),
+
+            headingFour = stringResource(R.string.headingFour),
+            contentFour = stringResource(R.string.contentFour)
         )
     }
 }
