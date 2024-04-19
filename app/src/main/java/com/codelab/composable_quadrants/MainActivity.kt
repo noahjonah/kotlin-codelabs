@@ -75,7 +75,6 @@ fun Quadrants(
         ){
             Column(
                 modifier = Modifier
-                    //.padding(16.dp)
                     .background(Color(0xFFEADDFF))
                     .fillMaxHeight()
                     .fillMaxWidth(0.5f),
@@ -100,7 +99,6 @@ fun Quadrants(
             }
             Column (
                 modifier = Modifier
-                    //.padding(16.dp)
                     .background(Color(0xFFD0BCFF))
                     .fillMaxHeight()
                     .fillMaxWidth(),
@@ -129,7 +127,6 @@ fun Quadrants(
         ){
             Column(
                 modifier = Modifier
-                    //.padding(16.dp)
                     .background(Color(0xFFB69DF8))
                     .fillMaxHeight()
                     .fillMaxWidth(0.5f),
@@ -151,7 +148,6 @@ fun Quadrants(
             }
             Column (
                 modifier = Modifier
-                    //.padding(16.dp)
                     .background(Color(0xFFF6EDFF))
                     .fillMaxHeight()
                     .fillMaxWidth(),
