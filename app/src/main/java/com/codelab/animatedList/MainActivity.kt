@@ -3,6 +3,7 @@ package com.codelab.animatedList
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -31,14 +32,22 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
-fun MyApp(modifier: Modifier = Modifier){
+fun MyApp(
+    modifier: Modifier = Modifier,
+    names: List<String> = listOf("World", "Compose")
+){
     Surface(
         modifier = modifier,
         color = MaterialTheme.colorScheme.background
     ) {
-        Greeting(name = "Android")
+        // for each word in our list we are creating a column, with 2 columns inside(from Greetings)
+        Column (modifier){
+            for (name in names){
+                // Greetings returns two columns -> Hello & One of the name from list
+                Greeting(name = name)
+            }
+        }
     }
 }
 
@@ -47,10 +56,12 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Surface (
         color = MaterialTheme.colorScheme.primary
     ){
-        Text(
-            text = "Hello $name!",
+        Column(
             modifier = modifier.padding(25.dp)
-        )
+        ) {
+            Text(text = "Hello")
+            Text(text = name)
+        }
     }
 }
 
