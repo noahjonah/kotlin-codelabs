@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -54,7 +55,8 @@ fun MyApp(
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Surface (
-        color = MaterialTheme.colorScheme.primary
+        color = MaterialTheme.colorScheme.primary,
+        modifier = modifier.padding(5.dp).fillMaxWidth()
     ){
         Column(
             modifier = modifier.padding(25.dp)
