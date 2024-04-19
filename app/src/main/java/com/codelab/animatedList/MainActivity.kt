@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -43,7 +46,7 @@ fun MyApp(
         color = MaterialTheme.colorScheme.background
     ) {
         // for each word in our list we are creating a column, with 2 columns inside(from Greetings)
-        Column (modifier){
+        Column (modifier.padding(5.dp)){
             for (name in names){
                 // Greetings returns two columns -> Hello & One of the name from list
                 Greeting(name = name)
@@ -56,13 +59,25 @@ fun MyApp(
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Surface (
         color = MaterialTheme.colorScheme.primary,
-        modifier = modifier.padding(5.dp).fillMaxWidth()
+        modifier = modifier
+            .padding(5.dp)
+            .fillMaxWidth()
     ){
-        Column(
-            modifier = modifier.padding(25.dp)
-        ) {
-            Text(text = "Hello")
-            Text(text = name)
+        Row (
+            modifier = modifier.padding(24.dp)
+        ){
+            Column(
+                modifier = modifier.weight(1f)
+            ) {
+                Text(text = "Hello")
+                Text(text = name)
+            }
+
+            ElevatedButton(
+                onClick = { /*TODO*/ }
+            ) {
+                Text(text = "Show more")
+            }
         }
     }
 }
