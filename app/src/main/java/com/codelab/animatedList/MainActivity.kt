@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
@@ -116,17 +118,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 private fun Greetings(
     modifier: Modifier = Modifier,
-    names: List<String> = listOf("World", "Compose")
+    names: List<String> = List(500) {"$it"}
 ){
     Surface(
         modifier = modifier,
         color = MaterialTheme.colorScheme.background
     ) {
-        // for each word in our list we are creating a column, with 2 columns inside(from Greetings)
-        Column (modifier.padding(5.dp)){
-            for (name in names){
-                // Greetings returns two columns -> Hello & One of the name from list
-                Greeting(name = name)
+        LazyColumn(modifier.padding(5.dp)){
+            items(items = names) {
+                name -> Greeting(name = name)
             }
         }
     }
