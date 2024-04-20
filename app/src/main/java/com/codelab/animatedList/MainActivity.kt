@@ -177,6 +177,21 @@ private fun Greetings(
 }
 
 @Preview(
+    showSystemUi = true,
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES
+)
+@Composable
+fun MyAppPreview(){
+    AnimatedListTheme {
+        MyApp()
+    }
+}
+
+
+/*
+
+@Preview(
     showBackground = true,
     showSystemUi = true,
     uiMode = UI_MODE_NIGHT_YES,
@@ -191,7 +206,7 @@ fun GreetingPreview() {
 @Preview(
     showSystemUi = true,
     showBackground = true,
-    uiMode = UI_MODE_NIGHT_YES,
+    uiMode = UI_MODE_NIGHT_YES
 )
 @Composable
 fun OnboardScreenPreview(){
@@ -200,17 +215,4 @@ fun OnboardScreenPreview(){
     }
 }
 
-/**
-
-@Preview(
-showSystemUi = true,
-showBackground = true
-)
-@Composable
-fun MyAppPreview(){
-AnimatedListTheme {
-MyApp()
-}
-}
-
- **/
+ */
