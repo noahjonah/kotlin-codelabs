@@ -19,6 +19,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +32,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
@@ -63,7 +67,7 @@ fun OnboardScreen(onContinueClicked: () -> Unit, modifier: Modifier = Modifier){
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Welcome to the basics!",
+                text = stringResource(R.string.welcome_text),
                 fontSize = 20.sp
             )
             // Value of onClick will be set to onContinueClicked value from another composable
@@ -71,7 +75,7 @@ fun OnboardScreen(onContinueClicked: () -> Unit, modifier: Modifier = Modifier){
                 onClick = onContinueClicked,
                 modifier.padding(24.dp)
             ) {
-                Text(text = "Continue")
+                Text(text = stringResource(R.string.continue_btn_txt))
             }
         }
     }
@@ -93,7 +97,18 @@ fun MyApp(modifier: Modifier = Modifier){
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+private fun Greeting(name: String, modifier: Modifier = Modifier){
+    Card(
+        modifier = modifier.padding(vertical = 10.dp, horizontal = 5.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary
+        )
+    ){CardContent(name)}
+}
+
+
+@Composable
+fun CardContent(name: String, modifier: Modifier = Modifier) {
     val expanded = rememberSaveable {mutableStateOf(false)}
     val extraPadding by animateDpAsState(
         if (expanded.value) 50.dp else 0.dp,
@@ -118,19 +133,26 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     .weight(1f)
             ) {
                 Text(text = "Hello")
-                Text(text = name)
+                Text(text = name, style = MaterialTheme.typography.headlineLarge.copy(
+                    fontWeight = FontWeight.ExtraBold)
+                )
+                if (expanded.value) {
+                    Text(
+                        text = (stringResource(R.string.expanded_body)).repeat(4)
+                    )
+                }
             }
-
-          IconButton(
+            IconButton(
               onClick = {
                   expanded.value = !expanded.value // change expand value upon click
               }
-          ) {
+            ) {
                 Icon(
                     imageVector = if (expanded.value)
                         Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
-                    contentDescription = if (expanded.value) "show more" else "show less"
-
+                    contentDescription = if (expanded.value)
+                        stringResource(R.string.show_more)
+                    else stringResource(R.string.show_less)
                 )
           }
         }
@@ -154,21 +176,6 @@ private fun Greetings(
     }
 }
 
-/**
-@Preview(
-    showSystemUi = true,
-    showBackground = true
-)
-@Composable
-fun MyAppPreview(){
-    AnimatedListTheme {
-        MyApp()
-    }
-}
-
-**/
-
-
 @Preview(
     showBackground = true,
     showSystemUi = true,
@@ -180,9 +187,6 @@ fun GreetingPreview() {
         Greetings()
     }
 }
-
-
-
 
 @Preview(
     showSystemUi = true,
@@ -196,3 +200,17 @@ fun OnboardScreenPreview(){
     }
 }
 
+/**
+
+@Preview(
+showSystemUi = true,
+showBackground = true
+)
+@Composable
+fun MyAppPreview(){
+AnimatedListTheme {
+MyApp()
+}
+}
+
+ **/

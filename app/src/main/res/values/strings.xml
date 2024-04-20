@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Animated List</string>
+    <string name="show_more">show more</string>
+    <string name="show_less">show less</string>
+    <string name="expanded_body">"Composem ipsum color sit lazy, padding theme elit, sed do bouncy. "</string>
+    <string name="welcome_text">Welcome to the basics!</string>
+    <string name="continue_btn_txt">Continue</string>
 </resources>
