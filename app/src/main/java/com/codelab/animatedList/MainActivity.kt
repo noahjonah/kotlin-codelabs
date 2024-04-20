@@ -1,8 +1,12 @@
 package com.codelab.animatedList
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,20 +15,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
-import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.codelab.animatedList.ui.theme.AnimatedListTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +95,14 @@ fun MyApp(modifier: Modifier = Modifier){
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val expanded = rememberSaveable {mutableStateOf(false)}
-    val extraPadding = if (expanded.value) 50.dp else 0.dp
+    val extraPadding by animateDpAsState(
+        if (expanded.value) 50.dp else 0.dp,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioHighBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "Make the colum movements upon expanding"
+    )
     Surface (
         color = MaterialTheme.colorScheme.primary,
         modifier = modifier
@@ -96,21 +114,25 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         ){
             Column(
                 modifier = modifier
-                    .padding(bottom = extraPadding) // expand to 50dp if true(Clicked)
+                    .padding(bottom = extraPadding.coerceAtLeast(0.dp)) // expand to 50dp if true(Clicked)
                     .weight(1f)
             ) {
                 Text(text = "Hello")
                 Text(text = name)
             }
-            ElevatedButton(
-                onClick = {
-                    expanded.value = !expanded.value // change expand value upon click
-                }
-            ) {
-                Text(
-                    if (expanded.value) "Show less" else "show more"
+
+          IconButton(
+              onClick = {
+                  expanded.value = !expanded.value // change expand value upon click
+              }
+          ) {
+                Icon(
+                    imageVector = if (expanded.value)
+                        Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                    contentDescription = if (expanded.value) "show more" else "show less"
+
                 )
-            }
+          }
         }
     }
 }
@@ -132,6 +154,7 @@ private fun Greetings(
     }
 }
 
+/**
 @Preview(
     showSystemUi = true,
     showBackground = true
@@ -143,12 +166,13 @@ fun MyAppPreview(){
     }
 }
 
+**/
 
-/**
 
 @Preview(
     showBackground = true,
-    showSystemUi = true
+    showSystemUi = true,
+    uiMode = UI_MODE_NIGHT_YES,
 )
 @Composable
 fun GreetingPreview() {
@@ -157,9 +181,13 @@ fun GreetingPreview() {
     }
 }
 
+
+
+
 @Preview(
     showSystemUi = true,
-    showBackground = true
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES,
 )
 @Composable
 fun OnboardScreenPreview(){
@@ -168,4 +196,3 @@ fun OnboardScreenPreview(){
     }
 }
 
-**/
