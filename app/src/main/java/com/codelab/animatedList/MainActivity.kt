@@ -42,13 +42,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun OnboardScreen(
-    onContinueClicked: () -> Unit,
-    modifier: Modifier = Modifier
-){
-    Surface(
-        modifier = modifier
-    ) {
+fun OnboardScreen(onContinueClicked: () -> Unit, modifier: Modifier = Modifier){
+    Surface(modifier = modifier) {
         Column(
             modifier = modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -58,6 +53,7 @@ fun OnboardScreen(
                 text = "Welcome to the basics!",
                 fontSize = 20.sp
             )
+            // Value of onClick will be set to onContinueClicked value from another composable
             Button(
                 onClick = onContinueClicked,
                 modifier.padding(24.dp)
@@ -69,24 +65,18 @@ fun OnboardScreen(
 }
 
 @Composable
-fun MyApp(
-    modifier: Modifier = Modifier
-){
-    val shouldShowOnBoard = remember {
-        mutableStateOf(true)
-    }
-    
+fun MyApp(modifier: Modifier = Modifier){
+    val shouldShowOnBoard = remember { mutableStateOf(true) }
     Surface(
         modifier = modifier
     ) {
+        // calling OnboardScreen OR Greetings composable upon state change(OnClick)
         if (shouldShowOnBoard.value){
             OnboardScreen(onContinueClicked = {shouldShowOnBoard.value = false})
         } else {
             Greetings()
         }
     }
-
-
 }
 
 @Composable
@@ -104,7 +94,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         ){
             Column(
                 modifier = modifier
-                    .padding(bottom = extraPadding)
+                    .padding(bottom = extraPadding) // expand to 50dp if true(Clicked)
                     .weight(1f)
             ) {
                 Text(text = "Hello")
@@ -112,7 +102,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             }
             ElevatedButton(
                 onClick = {
-                    expanded.value = !expanded.value
+                    expanded.value = !expanded.value // change expand value upon click
                 }
             ) {
                 Text(
