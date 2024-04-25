@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -102,7 +103,10 @@ fun FavoriteCollectionCard(modifier: Modifier = Modifier){
         modifier = modifier,
         shape = MaterialTheme.shapes.medium
     ){
-        Row {
+        Row (
+            modifier = modifier.width(255.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ){
             Image(
                 painter = painterResource(id = R.drawable.nature_meditation), 
                 contentDescription = null,
