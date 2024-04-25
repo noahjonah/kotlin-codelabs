@@ -52,6 +52,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun SearchBar(modifier: Modifier = Modifier) {
     TextField(
@@ -75,6 +76,7 @@ fun SearchBar(modifier: Modifier = Modifier) {
             .heightIn(min = 56.dp),
     )
 }
+
 
 @Composable
 fun AlignYourBodyElement(
@@ -132,6 +134,7 @@ fun FavoriteCollectionCard(
 }
 
 
+
 @Preview(
     showBackground = true,
     showSystemUi = true
@@ -142,7 +145,6 @@ fun SearchBarPreview() {
         SearchBar()
     }
 }
-
 
 @Preview(
     showBackground = true,
