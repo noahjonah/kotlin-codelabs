@@ -105,7 +105,9 @@ fun FavoriteCollectionCard(modifier: Modifier = Modifier){
         Row {
             Image(
                 painter = painterResource(id = R.drawable.nature_meditation), 
-                contentDescription = null
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = modifier.size(80.dp)
             )
             Text(text = "Nature Meditations")
         }
