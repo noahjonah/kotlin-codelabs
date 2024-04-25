@@ -3,6 +3,8 @@ package com.codelab.mysoothe_health
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,7 +31,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.mysoothe_health.ui.theme.MySootheTheme
@@ -99,7 +100,10 @@ fun AlignYourBodyElement(modifier: Modifier = Modifier){
 
 
 @Composable
-fun FavoriteCollectionCard(modifier: Modifier = Modifier){
+fun FavoriteCollectionCard(
+    @DrawableRes drawableImage: Int, @StringRes imageTitle: Int,
+    modifier: Modifier = Modifier
+){
     Surface (
         modifier = modifier,
         shape = MaterialTheme.shapes.medium,
@@ -110,13 +114,13 @@ fun FavoriteCollectionCard(modifier: Modifier = Modifier){
             verticalAlignment = Alignment.CenterVertically
         ){
             Image(
-                painter = painterResource(id = R.drawable.nature_meditation), 
+                painter = painterResource(drawableImage),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = modifier.size(80.dp)
             )
             Text(
-                text = "Nature Meditations",
+                text = stringResource(imageTitle),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = modifier.padding(16.dp)
             )
@@ -155,7 +159,10 @@ fun AlignYourBodyElementPreview(){
 @Composable
 fun FavoriteCollectionCardPreview(){
     MySootheTheme {
-        FavoriteCollectionCard()
+        FavoriteCollectionCard(
+            drawableImage = R.drawable.nature_meditation,
+            imageTitle = R.string.fav_title
+        )
     }
 }
 
