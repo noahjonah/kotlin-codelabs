@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -101,7 +102,8 @@ fun AlignYourBodyElement(modifier: Modifier = Modifier){
 fun FavoriteCollectionCard(modifier: Modifier = Modifier){
     Surface (
         modifier = modifier,
-        shape = MaterialTheme.shapes.medium
+        shape = MaterialTheme.shapes.medium,
+        color = MaterialTheme.colorScheme.surfaceVariant
     ){
         Row (
             modifier = modifier.width(255.dp),
@@ -113,7 +115,11 @@ fun FavoriteCollectionCard(modifier: Modifier = Modifier){
                 contentScale = ContentScale.Crop,
                 modifier = modifier.size(80.dp)
             )
-            Text(text = "Nature Meditations")
+            Text(
+                text = "Nature Meditations",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = modifier.padding(16.dp)
+            )
         }
     }
 }
