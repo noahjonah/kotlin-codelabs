@@ -98,7 +98,10 @@ fun AlignYourBodyElement(modifier: Modifier = Modifier){
 
 @Composable
 fun FavoriteCollectionCard(modifier: Modifier = Modifier){
-    Surface {
+    Surface (
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium
+    ){
         Row {
             Image(
                 painter = painterResource(id = R.drawable.nature_meditation), 
