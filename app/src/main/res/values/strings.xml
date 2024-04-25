@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MySoothe</string>
+    <string name="search_area_placeholder">Search</string>
 </resources>
