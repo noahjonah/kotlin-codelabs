@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -19,11 +20,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.mysoothe_health.ui.theme.MySootheTheme
@@ -71,14 +74,23 @@ fun SearchBar(modifier: Modifier = Modifier) {
 
 @Composable
 fun AlignYourBodyElement(modifier: Modifier = Modifier){
-    Column {
+    Column (
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
         Image(
             painter = painterResource(id = R.drawable.inversion),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = modifier.size(88.dp).clip(CircleShape)
+            modifier = modifier
+                .size(88.dp)
+                .clip(CircleShape)
         )
-        Text(text = "Inversion")
+        Text(
+            text = stringResource(R.string.inversion_image_text),
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp)
+        )
     }
 }
 
@@ -100,7 +112,7 @@ fun SearchBarPreview() {
     showSystemUi = true
 )
 @Composable
-fun AlignYourBodyElementPreviw(){
+fun AlignYourBodyElementPreview(){
     MySootheTheme {
         AlignYourBodyElement()
     }
