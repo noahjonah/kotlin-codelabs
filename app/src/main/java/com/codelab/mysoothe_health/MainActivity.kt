@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -95,6 +96,20 @@ fun AlignYourBodyElement(modifier: Modifier = Modifier){
 }
 
 
+@Composable
+fun FavoriteCollectionCard(modifier: Modifier = Modifier){
+    Surface {
+        Row {
+            Image(
+                painter = painterResource(id = R.drawable.nature_meditation), 
+                contentDescription = null
+            )
+            Text(text = "Nature Meditations")
+        }
+    }
+}
+
+
 @Preview(
     showBackground = true,
     showSystemUi = true
@@ -115,6 +130,17 @@ fun SearchBarPreview() {
 fun AlignYourBodyElementPreview(){
     MySootheTheme {
         AlignYourBodyElement()
+    }
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true
+)
+@Composable
+fun FavoriteCollectionCardPreview(){
+    MySootheTheme {
+        FavoriteCollectionCard()
     }
 }
 
