@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -119,7 +121,9 @@ fun AlignYourBodyRow(
         R.drawable.hiit to R.string.hiit_excercise
     )
     LazyRow(
-        modifier = modifier
+        modifier = modifier,
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(alignYourBodyData.toList()) { (drawable, description) ->
             AlignYourBodyElement(drawable = drawable, text = description)
