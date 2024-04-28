@@ -8,4 +8,9 @@
     <string name="pre_natal_yoga">Pre-natal Yoga</string>
     <string name="tabata_excercise">Tabata</string>
     <string name="stretching_excercise">Stretching</string>
+    <string name="overwhelmed_text">Overwhelmed</string>
+    <string name="shortmantra_text">Short Mantra</string>
+    <string name="stressAnxiety_text"><![CDATA[Stress & Anxiety]]></string>
+    <string name="selfMassage_text">Self Massage</string>
+    <string name="nightWind_txt">Night Wind</string>
 </resources>

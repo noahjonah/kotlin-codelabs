@@ -12,12 +12,16 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -162,6 +166,29 @@ fun FavoriteCollectionCard(
 }
 
 
+@Composable
+fun FavoriteCollectionGrid(modifier: Modifier = Modifier){
+    val favoriteCollectionData = mapOf(
+        R.drawable.nature_meditation to R.string.fav_title,
+        R.drawable.overwheamed to R.string.overwhelmed_text,
+        R.drawable.shortmantra to R.string.shortmantra_text,
+        R.drawable.stress_anxiety to R.string.stressAnxiety_text,
+        R.drawable.self_massage to R.string.selfMassage_text,
+        R.drawable.night_wind to R.string.nightWind_txt
+    )
+    LazyHorizontalGrid(
+        rows = GridCells.Fixed(2),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        modifier = modifier.height(200.dp)
+    ){
+        items(favoriteCollectionData.toList()){ (drawable, description) ->
+            FavoriteCollectionCard(drawableImage = drawable, imageTitle = description)
+        }
+    }
+}
+
 
 @Preview(
     showBackground = true,
@@ -196,6 +223,17 @@ fun FavoriteCollectionCardPreview(){
             drawableImage = R.drawable.nature_meditation,
             imageTitle = R.string.fav_title
         )
+    }
+}
+
+@Preview(
+    showSystemUi = true,
+    showBackground = true
+)
+@Composable
+fun FavoriteCollectionGridPreview(){
+    MySootheTheme {
+        FavoriteCollectionGrid()
     }
 }
 
