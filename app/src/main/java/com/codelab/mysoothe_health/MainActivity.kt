@@ -62,6 +62,18 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
+fun HomeScreen(
+    @StringRes title: Int,
+    contentFunction: @Composable () -> Unit
+){
+    Column {
+        Text(stringResource(title))
+        contentFunction()
+    }
+}
+
+
+@Composable
 fun SearchBar(modifier: Modifier = Modifier) {
     TextField(
         value = "",
@@ -188,6 +200,21 @@ fun FavoriteCollectionGrid(modifier: Modifier = Modifier){
         }
     }
 }
+
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun HomeScreenPreview(){
+    MySootheTheme {
+        HomeScreen(R.string.align_your_body_elements){
+            AlignYourBodyRow()
+        }
+    }
+}
+
 
 /**
 
