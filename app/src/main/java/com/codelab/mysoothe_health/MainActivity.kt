@@ -53,7 +53,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.mysoothe_health.ui.theme.MySootheTheme
-import java.security.AllPermission
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +78,17 @@ fun MySootheAppPortrait(){
     MySootheTheme {
         Scaffold(bottomBar = {BottomNavigation()}) {
             padding -> FullHomeScreen(Modifier.padding(padding))
+        }
+    }
+}
+
+
+@Composable
+fun MySootheAppLandscape(){
+    Surface(color = MaterialTheme.colorScheme.background) {
+        Row {
+            AppNavigationRail()
+            FullHomeScreen()
         }
     }
 }
