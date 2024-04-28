@@ -53,6 +53,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.mysoothe_health.ui.theme.MySootheTheme
+import java.security.AllPermission
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -286,36 +287,41 @@ fun BottomNavigation(modifier: Modifier = Modifier){
 @Composable
 fun AppNavigationRail(modifier: Modifier = Modifier){
     NavigationRail(
-        modifier = modifier.fillMaxHeight(),
         contentColor = MaterialTheme.colorScheme.background
     ) {
-        NavigationRailItem(
-            selected = true,
-            onClick = {},
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.Home, contentDescription = null,
-                )
-            },
-            label = {
-                Text(text = "Home")
-            },
-            modifier = modifier.padding(15.dp)
-        )
+        Column(
+            modifier = modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            NavigationRailItem(
+                selected = true,
+                onClick = {},
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Home, contentDescription = null,
+                    )
+                },
+                label = {
+                    Text(text = "Home")
+                },
+                modifier = modifier.padding(15.dp)
+            )
 
-        NavigationRailItem(
-            selected = false,
-            onClick = {},
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.AccountCircle, contentDescription = null
-                )
-            },
-            label = {
-                Text(text = "Profile")
-            },
-            modifier = modifier.padding(15.dp)
-        )
+            NavigationRailItem(
+                selected = false,
+                onClick = {},
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.AccountCircle, contentDescription = null
+                    )
+                },
+                label = {
+                    Text(text = "Profile")
+                },
+                modifier = modifier.padding(15.dp)
+            )
+        }
     }
 }
 
