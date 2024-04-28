@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    SearchBar()
+                    MySootheAppPortrait()
                 }
             }
         }
@@ -292,7 +292,7 @@ fun MySootheAppPortraitPreview(){
 }
 
 
-
+// ALL COMPOSABLE PREVIEWS
 /**
 
 @Preview(
@@ -365,3 +365,5 @@ fun FavoriteCollectionGridPreview(){
 }
 
 **/
+
+
