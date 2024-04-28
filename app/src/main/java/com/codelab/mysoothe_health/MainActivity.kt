@@ -24,7 +24,9 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -82,7 +84,9 @@ fun HomeScreenSection(
 
 @Composable
 fun FullHomeScreen(modifier: Modifier = Modifier){
-    Column(modifier = modifier) {
+    Column(
+        modifier = modifier.verticalScroll(rememberScrollState())
+    ) {
         Spacer(modifier = modifier.height(15.dp))
         SearchBar(modifier = modifier.padding(horizontal = 16.dp))
         HomeScreenSection(R.string.align_your_body_elements){
@@ -227,7 +231,8 @@ fun FavoriteCollectionGrid(modifier: Modifier = Modifier){
 
 @Preview(
     showBackground = true,
-    showSystemUi = true
+    showSystemUi = true,
+    heightDp = 200
 )
 @Composable
 fun FullHomeScreenPreview(){
