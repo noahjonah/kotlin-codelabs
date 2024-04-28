@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -82,15 +83,15 @@ fun HomeScreenSection(
 @Composable
 fun FullHomeScreen(modifier: Modifier = Modifier){
     Column(modifier = modifier) {
+        Spacer(modifier = modifier.height(15.dp))
         SearchBar(modifier = modifier.padding(horizontal = 16.dp))
-
         HomeScreenSection(R.string.align_your_body_elements){
             AlignYourBodyRow()
         }
-
         HomeScreenSection(R.string.favorite_collections_elements){
             FavoriteCollectionGrid()
         }
+        Spacer(modifier = modifier.height(15.dp))
     }
 }
 
