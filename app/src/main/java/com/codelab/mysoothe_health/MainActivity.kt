@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,6 +36,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -280,6 +283,43 @@ fun BottomNavigation(modifier: Modifier = Modifier){
 }
 
 
+@Composable
+fun AppNavigationRail(modifier: Modifier = Modifier){
+    NavigationRail(
+        modifier = modifier.fillMaxHeight(),
+        contentColor = MaterialTheme.colorScheme.background
+    ) {
+        NavigationRailItem(
+            selected = true,
+            onClick = {},
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Home, contentDescription = null,
+                )
+            },
+            label = {
+                Text(text = "Home")
+            },
+            modifier = modifier.padding(15.dp)
+        )
+
+        NavigationRailItem(
+            selected = false,
+            onClick = {},
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle, contentDescription = null
+                )
+            },
+            label = {
+                Text(text = "Profile")
+            },
+            modifier = modifier.padding(15.dp)
+        )
+    }
+}
+
+
 @Preview(
     showBackground = true,
     showSystemUi = true
@@ -288,6 +328,14 @@ fun BottomNavigation(modifier: Modifier = Modifier){
 fun MySootheAppPortraitPreview(){
     MySootheTheme {
         MySootheAppPortrait()
+    }
+}
+
+@Preview
+@Composable
+fun AppNavigationRailPreview(){
+    MySootheTheme {
+        AppNavigationRail()
     }
 }
 
