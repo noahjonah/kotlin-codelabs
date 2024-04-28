@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun HomeScreen(
+fun HomeScreenSection(
     @StringRes title: Int,
     contentFunction: @Composable () -> Unit
 ){
@@ -70,10 +70,27 @@ fun HomeScreen(
         Text(
             stringResource(title),
             style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.paddingFromBaseline(bottom = 16.dp, top = 40.dp)
+            modifier = Modifier
+                .paddingFromBaseline(bottom = 16.dp, top = 40.dp)
                 .padding(horizontal = 16.dp)
         )
         contentFunction()
+    }
+}
+
+
+@Composable
+fun FullHomeScreen(modifier: Modifier = Modifier){
+    Column(modifier = modifier) {
+        SearchBar(modifier = modifier.padding(horizontal = 16.dp))
+
+        HomeScreenSection(R.string.align_your_body_elements){
+            AlignYourBodyRow()
+        }
+
+        HomeScreenSection(R.string.favorite_collections_elements){
+            FavoriteCollectionGrid()
+        }
     }
 }
 
@@ -212,11 +229,9 @@ fun FavoriteCollectionGrid(modifier: Modifier = Modifier){
     showSystemUi = true
 )
 @Composable
-fun HomeScreenPreview(){
+fun FullHomeScreenPreview(){
     MySootheTheme {
-        HomeScreen(R.string.align_your_body_elements){
-            AlignYourBodyRow()
-        }
+        FullHomeScreen()
     }
 }
 
