@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -80,7 +82,7 @@ fun SearchBar(modifier: Modifier = Modifier) {
 
 @Composable
 fun AlignYourBodyElement(
-    @DrawableRes drawableImage: Int, @StringRes imageTitle: Int,
+    @DrawableRes drawable: Int, @StringRes text: Int,
     modifier: Modifier = Modifier
 ){
     Column (
@@ -88,7 +90,7 @@ fun AlignYourBodyElement(
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Image(
-            painter = painterResource(drawableImage),
+            painter = painterResource(drawable),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier
@@ -96,10 +98,32 @@ fun AlignYourBodyElement(
                 .clip(CircleShape)
         )
         Text(
-            text = stringResource(imageTitle),
+            text = stringResource(text),
             style = MaterialTheme.typography.bodyMedium,
             modifier = modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp)
         )
+    }
+}
+
+
+@Composable
+fun AlignYourBodyRow(
+    modifier: Modifier = Modifier,
+) {
+    val alignYourBodyData = mapOf(
+        R.drawable.inversion to R.string.inversion_image_text,
+        R.drawable.child_yoga to R.string.yoga_health,
+        R.drawable.stretching to R.string.stretching_excercise,
+        R.drawable.tabata to R.string.tabata_excercise,
+        R.drawable.prenatal to R.string.pre_natal_yoga,
+        R.drawable.hiit to R.string.hiit_excercise
+    )
+    LazyRow(
+        modifier = modifier
+    ) {
+        items(alignYourBodyData.toList()) { (drawable, description) ->
+            AlignYourBodyElement(drawable = drawable, text = description)
+        }
     }
 }
 
@@ -153,10 +177,7 @@ fun SearchBarPreview() {
 @Composable
 fun AlignYourBodyElementPreview(){
     MySootheTheme {
-        AlignYourBodyElement(
-            R.drawable.inversion,
-            R.string.inversion_image_text
-        )
+        AlignYourBodyRow()
     }
 }
 

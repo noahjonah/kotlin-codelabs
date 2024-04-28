@@ -3,4 +3,9 @@
     <string name="search_area_placeholder">Search</string>
     <string name="inversion_image_text">Inversion</string>
     <string name="fav_title">Nature Meditations</string>
+    <string name="yoga_health">Quick Yoga</string>
+    <string name="hiit_excercise">Hiit</string>
+    <string name="pre_natal_yoga">Pre-natal Yoga</string>
+    <string name="tabata_excercise">Tabata</string>
+    <string name="stretching_excercise">Stretching</string>
 </resources>
