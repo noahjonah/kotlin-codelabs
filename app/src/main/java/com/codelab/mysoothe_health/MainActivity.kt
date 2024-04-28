@@ -67,7 +67,12 @@ fun HomeScreen(
     contentFunction: @Composable () -> Unit
 ){
     Column {
-        Text(stringResource(title))
+        Text(
+            stringResource(title),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.paddingFromBaseline(bottom = 16.dp, top = 40.dp)
+                .padding(horizontal = 16.dp)
+        )
         contentFunction()
     }
 }
