@@ -35,6 +35,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -69,6 +70,16 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
+fun MySootheAppPortrait(){
+    MySootheTheme {
+        Scaffold(bottomBar = {BottomNavigation()}) {
+            padding -> FullHomeScreen(Modifier.padding(padding))
+        }
+    }
+}
+
+
+@Composable
 fun HomeScreenSection(
     @StringRes title: Int,
     contentFunction: @Composable () -> Unit
@@ -91,8 +102,7 @@ fun FullHomeScreen(modifier: Modifier = Modifier){
     Column(
         modifier = modifier.verticalScroll(rememberScrollState())
     ) {
-        Spacer(modifier = modifier.height(15.dp))
-        SearchBar(modifier = modifier.padding(horizontal = 16.dp))
+        SearchBar()
         HomeScreenSection(R.string.align_your_body_elements){
             AlignYourBodyRow()
         }
@@ -124,6 +134,7 @@ fun SearchBar(modifier: Modifier = Modifier) {
         },
         modifier = modifier
             .fillMaxWidth()
+            .padding(horizontal = 16.dp)
             .heightIn(min = 56.dp),
     )
 }
@@ -274,12 +285,26 @@ fun BottomNavigation(modifier: Modifier = Modifier){
     showSystemUi = true
 )
 @Composable
+fun MySootheAppPortraitPreview(){
+    MySootheTheme {
+        MySootheAppPortrait()
+    }
+}
+
+
+
+/**
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
 fun FullHomeScreenPreview(){
     MySootheTheme {
         FullHomeScreen()
     }
 }
-
 
 @Preview(
     showSystemUi = true,
@@ -291,8 +316,6 @@ fun BottomNavigationPreview(){
         BottomNavigation()
     }
 }
-
-/**
 
 @Preview(
     showBackground = true,
