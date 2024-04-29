@@ -43,6 +43,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,6 +60,7 @@ import com.codelab.mysoothe_health.ui.theme.MySootheTheme
 
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -65,9 +70,23 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MySootheAppPortrait()
+                    val windowSizing = calculateWindowSizeClass(activity = this)
+                    MySootheApp(windowSize = windowSizing)
                 }
             }
+        }
+    }
+}
+
+
+@Composable
+fun MySootheApp(windowSize: WindowSizeClass) {
+    when (windowSize.widthSizeClass) {
+        WindowWidthSizeClass.Compact -> {
+            MySootheAppPortrait()
+        }
+        WindowWidthSizeClass.Expanded -> {
+            MySootheAppLandscape()
         }
     }
 }
@@ -348,6 +367,10 @@ fun MySootheAppPortraitPreview(){
     }
 }
 
+
+// ALL COMPOSABLE PREVIEWS
+/**
+
 @Preview
 @Composable
 fun AppNavigationRailPreview(){
@@ -355,10 +378,6 @@ fun AppNavigationRailPreview(){
         AppNavigationRail()
     }
 }
-
-
-// ALL COMPOSABLE PREVIEWS
-/**
 
 @Preview(
     showBackground = true,
