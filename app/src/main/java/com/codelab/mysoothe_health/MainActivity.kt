@@ -305,7 +305,7 @@ fun BottomNavigation(modifier: Modifier = Modifier){
             label = {
                 Text(stringResource(R.string.profile_nav_text))
             },
-            selected = true,
+            selected = false,
             onClick = {}
         )
     }
