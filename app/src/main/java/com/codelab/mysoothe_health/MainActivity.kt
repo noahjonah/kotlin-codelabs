@@ -286,12 +286,11 @@ fun BottomNavigation(modifier: Modifier = Modifier){
         NavigationBarItem(
             icon = {
                 Icon(
-                    imageVector = Icons.Default.Home,
-                    contentDescription = null
+                    imageVector = Icons.Default.Home, contentDescription = null
                 )
             },
             label = {
-                Text(text = "Home")
+                Text(stringResource(R.string.home_nav_text))
             },
             selected = true,
             onClick = {}
@@ -300,12 +299,11 @@ fun BottomNavigation(modifier: Modifier = Modifier){
         NavigationBarItem(
             icon = {
                 Icon(
-                    imageVector = Icons.Default.AccountCircle,
-                    contentDescription = null
+                    imageVector = Icons.Default.AccountCircle, contentDescription = null
                 )
             },
             label = {
-                Text(text = "Account")
+                Text(stringResource(R.string.profile_nav_text))
             },
             selected = true,
             onClick = {}
@@ -333,7 +331,7 @@ fun AppNavigationRail(modifier: Modifier = Modifier){
                     )
                 },
                 label = {
-                    Text(text = "Home")
+                    Text(stringResource(R.string.home_nav_text))
                 },
                 modifier = modifier.padding(15.dp)
             )
@@ -347,7 +345,7 @@ fun AppNavigationRail(modifier: Modifier = Modifier){
                     )
                 },
                 label = {
-                    Text(text = "Profile")
+                    Text(stringResource(id = R.string.profile_nav_text))
                 },
                 modifier = modifier.padding(15.dp)
             )
@@ -449,5 +447,3 @@ fun FavoriteCollectionGridPreview(){
 }
 
 **/
-
-

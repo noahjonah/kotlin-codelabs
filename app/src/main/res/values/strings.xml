@@ -15,4 +15,6 @@
     <string name="nightWind_txt">Night Wind</string>
     <string name="align_your_body_elements">Align Your Body Elements</string>
     <string name="favorite_collections_elements">Favorite Collections</string>
+    <string name="home_nav_text">Home</string>
+    <string name="profile_nav_text">Profile</string>
 </resources>
