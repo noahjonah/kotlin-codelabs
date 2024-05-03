@@ -1,6 +1,7 @@
 package com.codelab.wellnessApp
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -22,18 +23,31 @@ fun WaterCounter(modifier: Modifier = Modifier){
             .padding(16.dp)
     ){
         if (counter.value > 0){
+            var showTask: MutableState<Boolean> = remember {
+                mutableStateOf(true)
+            }
+            if (showTask.value){
+                WellnessTaskItem(
+                    taskName = "Have you taken your 15 minute walk today?",
+                    onClose = { showTask.value = false }
+                )
+            }
             Text(
                 text = "You've had ${counter.value} glasses.",
                 modifier = modifier.padding(16.dp)
             )
         }
-
-        Button(
-            onClick = { counter.value++ },
-            enabled = counter.value < 10,
-            modifier = Modifier.padding(top = 20.dp)
-        ) {
-            Text("Add One")
+        Row (modifier = Modifier.padding(top = 20.dp)){
+            Button(
+                onClick = { counter.value++ },
+                enabled = counter.value < 10,
+                modifier = Modifier
+            ) {
+                Text("Add One")
+            }
+            Button(onClick = { counter.value = 0 }) {
+                Text(text = "Clear")
+            }
         }
     }
 }
