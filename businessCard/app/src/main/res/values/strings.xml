@@ -1,0 +1,20 @@
+<resources>
+<<<<<<< HEAD
+    <string name="app_name">Composable Quadrants</string>
+    <string name="headingOne">Text composable</string>
+    <string name="contentOne">Displays text and follows the recommended Material Design guidelines.</string>
+    <string name="headingTwo">Image composable</string>
+    <string name="contentTwo">Creates a composable that lays out and draws a given Painter class object.</string>
+    <string name="headingThree">Row composable</string>
+    <string name="contentThree">A layout composable that places its children in a horizontal sequence.</string>
+    <string name="headingFour">Column composable</string>
+    <string name="contentFour">A layout composable that places its children in a vertical sequence.</string>
+=======
+    <string name="app_name">Bussiness Card</string>
+    <string name="fullName">Noah Jonah</string>
+    <string name="title">Application Security</string>
+    <string name="phone">+225 767 482 267</string>
+    <string name="socialMedia">instagram@_noahjonah_</string>
+    <string name="email">noahjonah705@gmail.com</string>
+>>>>>>> businessCard/master
+</resources>
